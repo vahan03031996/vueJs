@@ -42,10 +42,19 @@
             <td>{{user.gender}} </td>
             <td>{{user.age}}  {{user.age > 50 ? "OLD" : 'YOUNG'}}</td>
             <td><button class="btn btn-danger" @click="deleteUser(user.id)">Delete </button></td>
-            <!--            <td>{{user.id}} </td>-->
+<!--            <td><button class="btn btn-danger" @click="editUser(user.id)">editUser </button></td>-->
+
           </tr>
         </table>
       </div>
+<!--      <div class="modal" v-if="modals.editUser>-->
+<!--        <div class="container">-->
+<!--            <div class="form">-->
+
+<!--            </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
     </div>
   </div>
 </template>
@@ -62,6 +71,15 @@
           gender: '',
           age: ''
         },
+        // editUser:{
+        //   name: '',
+        //   surname: '',
+        //   gender: '',
+        //   age: '',
+        // },
+        // modals:{
+        // editUser = fols
+        // },
         errors: {
           user: {
             name: '',
@@ -94,8 +112,19 @@
         }
       },
       deleteUser(id){
-        // console.log(id)
+        this.users = this.users.filter(user => {
+          return user.id != id
+        })
+        this.setUsersStorage();
+
       },
+      // editUser(id){
+      //   const user = this.find(user => {
+      //     return user.id == id
+      //   })
+      //   this.editUser() = {...user}
+      //   this.modals.
+      // },
       setUsersStorage(){
         const users = JSON.stringify(this.users)
         localStorage.setItem("users" , users)
@@ -122,5 +151,17 @@
   }
   .female {
     background-color: pink;
+  }
+  .my_modal{
+    position: absolute;
+    width: 80%;
+    height: 70vh;
+    background-color: black;
+    color: aliceblue;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
   }
 </style>
