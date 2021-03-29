@@ -4,7 +4,6 @@ import Users from '@/components/Users'
 import UsersDatails from '@/components/UsersDatails'
 import UsersCreate from '@/components/UsersCreate'
 
-
 Vue.use(Router)
 
 export default new Router({
@@ -20,8 +19,8 @@ export default new Router({
       component: UsersCreate
     },
     {
-      path: '/user/user_id/datails',
-      name: '/User-datails',
+      path: '/user/:user_id/datails',
+      name: 'User-Datails',
       component: UsersDatails
     }
   ]
