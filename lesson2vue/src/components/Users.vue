@@ -13,40 +13,41 @@
 
 <script>
 import User from "./User";
-  export default {
-    name: "Users",
-      components: {
-      User
-    },
-    data() {
-      return {
-        users: []
-      }
-    },
-    mounted() {
-      this.getUsersStorage();
-    },
-    methods:{
-      getUsersStorage() {
-        let users = localStorage.getItem("users") || null;
-        users = JSON.parse(users)
-        this.users = users ? users : []
-      },
-      deleteUser(id){
-        this.users = this.users.filter(user => {
-          return user.id != id
-        });
 
-        this.setUsersStorage();
-      },
-        setUsersStorage(){
-          const users = JSON.stringify(this.users)
-          localStorage.setItem("users", users);
-        }
-      }
+export default {
+  name: "Users",
+  components: {
+    User
+  },
+  data() {
+    return {
+      users: []
+    }
+  },
+  mounted() {
+    this.getUsersStorage();
+    this.consoleTime()
+    this.consoleTime2()
+  },
+  methods: {
+    getUsersStorage() {
+      let users = localStorage.getItem("users") || null;
+      users = JSON.parse(users)
+      this.users = users ? users : []
+    },
+    deleteUser(id) {
+      this.users = this.users.filter(user => {
+        return user.id != id
+      });
 
-
+      this.setUsersStorage();
+    },
+    setUsersStorage() {
+      const users = JSON.stringify(this.users)
+      localStorage.setItem("users", users);
+    }
   }
+}
 </script>
 
 <style scoped>

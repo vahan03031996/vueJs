@@ -2,6 +2,7 @@
   <div id="app">
     <Header />
     <router-view/>
+    <Global/>
   </div>
 </template>
 
